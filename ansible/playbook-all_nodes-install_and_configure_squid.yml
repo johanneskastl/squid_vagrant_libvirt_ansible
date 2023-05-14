@@ -1,0 +1,18 @@
+---
+- name: 'Install and configure squid'
+  hosts: 'all'
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - name: 'Install the squid package'
+      ansible.builtin.package:
+        name: 'squid'
+        state: 'present'
+
+    - name: 'Start and enable the squid service'
+      ansible.builtin.service:
+        name: 'squid'
+        state: 'started'
+        enabled: true
